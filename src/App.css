@@ -1,0 +1,46 @@
+html, body{
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+#root {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.storiesRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 1rem;
+  gap: 1rem;
+  border-bottom: 1px solid rgb(126, 122, 122);
+}
+
+.currentStory {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.currentStory img {
+  max-width: 1080px;
+  max-height: 1920px;
+}
+
+.story {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid rgb(126, 122, 122);
+  width: 32px;
+  height: 32px;
+  background-size: cover;
+}
