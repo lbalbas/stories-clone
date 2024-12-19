@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import CurrentStory  from './components/CurrentStory'
 import Stories from './components/Stories'
+import StoryProgress from './components/StoryProgress'
 import './App.css'
 
 const getStories = () => {
@@ -36,20 +37,30 @@ function App() {
         reader.readAsDataURL(file);
       }
 }
-  const nextStory = () => {
-    if (currentStory < stories.length - 1) {
-      setCurrentStory(currentStory + 1)
-    }else {
-      setCurrentStory(0)
+const nextStory = () => {
+  console.log("Next story");
+  console.log(currentStory, stories.length-1)
+  console.log(currentStory < (stories.length - 1))
+
+  setCurrentStory(prev => {
+    const newCurrent = prev + 1;
+    if (newCurrent >= stories.length) {
+      return 0; // Reset to first story
     }
-    iterateStory()
-  }
+    return newCurrent;
+  });
+  
+  iterateStory(); // Call iterateStory to update interval
+};
 
   const iterateStory = () => {
+    console.log("Hey1")
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
-    intervalRef.current = setInterval(nextStory, 3000);
+    intervalRef.current = setInterval(() => {
+      nextStory();
+    }, 3000);
   }
 
   const removeOldStories = () => {
@@ -62,25 +73,31 @@ function App() {
   }
 
   useEffect(() => {
-    removeOldStories()
-  })
+    iterateStory();
+    removeOldStories();
+    // Clear interval when component unmounts
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [stories]);
   
   const changeCurrentStory = (index: number) => {
     setCurrentStory(index)
     iterateStory()
   }
 
-  iterateStory()
-
   return (
-    <div>
-      <Stories setCurrentStory={changeCurrentStory} stories={stories} addNewStory={addNewStory} />
-      <CurrentStory
+    <div className="appContainer">
+      <Stories progressBar={StoryProgress} currentStory={currentStory} setCurrentStory={changeCurrentStory} stories={stories} addNewStory={addNewStory} />
+      <StoryProgress currentStory={currentStory} stories={stories}/>
+      {stories.length > 0 && <CurrentStory
         currentStory={currentStory}
         setCurrentStory={setCurrentStory}
         stories={stories}
         nextStory={nextStory}
-      /> 
+      /> }
     </div>
   )
 }

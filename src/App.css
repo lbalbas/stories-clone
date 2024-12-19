@@ -9,7 +9,11 @@ html, body{
   margin: 0 auto;
   text-align: center;
 }
-
+.appContainer{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
 .storiesRow {
   display: flex;
   flex-direction: row;
@@ -18,17 +22,19 @@ html, body{
   padding: 1rem;
   gap: 1rem;
   border-bottom: 1px solid rgb(126, 122, 122);
+  overflow-x: scroll;
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.storiesRow::-webkit-scrollbar {
+  display: none;  /* Safari and Chrome */
 }
 
 .currentStory {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.currentStory img {
-  max-width: 1080px;
+  display: block;
+  height: 90vh;
+  max-width: 100vw;  
   max-height: 1920px;
 }
 
@@ -40,7 +46,56 @@ html, body{
   cursor: pointer;
   border-radius: 50%;
   border: 1px solid rgb(126, 122, 122);
-  width: 32px;
-  height: 32px;
+  width: 3rem;
+  height: 3rem;
   background-size: cover;
+}
+
+.storyProgressContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding-top: 3px;
+  margin-bottom: 3px;
+  gap: 6px;
+  height:3px;
+}
+
+.storyProgressBar {
+  max-width: 100vw;
+  width: 100%;
+  height: 3px;
+  background-color: grey;
+  position: relative;
+  overflow: hidden;
+}
+
+.storyProgressBar.active {
+  background: rgb(46,38,91);
+  background: linear-gradient(90deg, rgba(46,38,91,1) 0%, rgba(132,54,191,1) 46%, rgba(46,38,91,1) 100%);
+  background-size: 100% 100%; /* Increased size */
+  background-position: 0% 0%;
+}
+.storyProgressBar.active::before {
+content: '';
+position: absolute;
+top: 0;
+left: 100%;
+width: 100%;
+height: 100%;
+background-color: grey; /* grey background */
+animation: animateBackground 3s linear;
+}
+@keyframes animateBackground {
+  0% {
+    left: 0
+  }
+  100% {
+    left: 100%;
+  }
+}
+.past{
+  background: rgb(46,38,91);
+background: linear-gradient(90deg, rgba(46,38,91,1) 0%, rgba(132,54,191,1) 46%, rgba(46,38,91,1) 100%);
 }
