@@ -2,6 +2,8 @@
 
 This project is a responsive stories clone built with React and bootstrapped with Vite. It allows users to upload images, which are then converted to base64 and displayed as stories. The stories are stored in `localStorage` for persistent data and automatically deleted after 24 hours.
 
+Live demo available [here](https://lovely-lamington-a3f0ee.netlify.app/)
+
 ## Features
 
 * **Responsive Design:** Adapts to various screen sizes.
