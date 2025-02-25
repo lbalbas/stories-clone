@@ -1,50 +1,42 @@
-# React + TypeScript + Vite
+# Stories Clone (React + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a responsive stories clone built with React and bootstrapped with Vite. It allows users to upload images, which are then converted to base64 and displayed as stories. The stories are stored in `localStorage` for persistent data and automatically deleted after 24 hours.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Responsive Design:** Adapts to various screen sizes.
+* **Image Upload:** Users can upload images to create stories.
+* **Base64 Conversion:** Images are converted to base64 for storage.
+* **LocalStorage Persistence:** Stories are stored in `localStorage` for persistence across sessions.
+* **Automatic Deletion:** Stories are automatically deleted after 24 hours.
+* **Vite Powered:** Fast development and build process.
 
-## Expanding the ESLint configuration
+## Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+* **React:** JavaScript library for building user interfaces.
+* **Tailwind CSS:** Utility-first CSS framework.
+* **Vite:** Next generation frontend tooling.
+* **JavaScript:** Core programming language.
 
-- Configure the top-level `parserOptions` property like this:
+## Getting Started
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1.  **Clone the repository:**
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+    ```
+    git clone https://github.com/lbalbas/stories-clone
+    cd stories-clone
+    ```
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+2.  **Install dependencies:**
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+    ```
+    pnpm install
+    ```
+
+3.  **Run the development server:**
+
+    ```
+    pnpm run dev
+    ```
+
+    This will start the development server at `http://localhost:5173/`.
