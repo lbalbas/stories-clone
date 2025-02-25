@@ -4,7 +4,7 @@ const  StoryProgress = ({currentStory, stories}:{currentStory: number, stories: 
     return (
         <div className="storyProgressContainer">
         
-        {stories.map((element: { image: string; date: Date; }, index: number) =>{
+        {stories.map((_element: { image: string; date: Date; }, index: number) =>{
             return(
                 <div key={index} className={"storyProgressBar" + (index === currentStory ? " active" : "") + (index < currentStory ? " past" : "")}></div>
             )
